@@ -9,7 +9,7 @@ $(function () {
                 response.avatar
             );
             displayUserAvatar(user)
-            console.log(user.avatar)
+            displayUserInfo(user)
     })
         .catch(function () {
             alert('Error loading user info')
@@ -18,8 +18,7 @@ $(function () {
 
 
     $('.avatar-container').click(function () {
-        console.log("vajutatud")
-
+        $('#dropdown-content').toggle()
     })
 
 });
@@ -44,6 +43,7 @@ function displayUserAvatar(user) {
 }
 
 function displayUserInfo(user) {
-    $('.dropdown-menu #name').text(user.firstname + ' ' + user.lastname);
-    $(".dropdown-menu #email").text(user.email);
+    $('#dropdown-content #name').text(user.firstname + ' ' + user.lastname);
+    $("#dropdown-content #email").text(user.email);
 }
+
