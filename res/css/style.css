@@ -71,6 +71,7 @@ header:hover {
 
 nav {
     display: flex;
+    position: relative;
     background-color: #ffffff;
     align-items: center;
 }
@@ -116,9 +117,11 @@ nav div.avatar-container {
 nav #dropdown-content {
     display: none;
     background-color: #ffffff;
-    height: auto;
     width: min-content;
-    text-align: left;
+    height: auto;
+    position: absolute;
+    top: 40px;
+    right: 0;
 }
 
 
