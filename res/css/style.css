@@ -215,3 +215,25 @@ nav #dropdown-content {
 .like-button.liked {
     background-color: #01579b;
 }
+
+
+
+section .profile-container {
+    border: 1px solid gray;
+    width: 40%;
+    height: 30%;
+    margin: 2%;
+}
+
+section .profile-container img {
+    
+    width: 30%;
+}
+
+section .profile-container p {
+    text-align: center;
+}
+
+section .profile-container button {
+    float: center;
+}

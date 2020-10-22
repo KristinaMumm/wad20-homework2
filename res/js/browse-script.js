@@ -17,7 +17,8 @@ $(function () {
         })
         .catch(function () {
             alert('Error loading profiles')
-        });
+        })
+    ;
 });
 
 function loadProfilesInfo() {
@@ -36,7 +37,7 @@ function loadProfilesInfo() {
 
 function displayProfiles() {
     for (let profile of profiles){
-        let profileDiv = $('div')
+        let profileDiv = $('<div>').attr('class', 'profile-container')
         let avatar = $('<img>').attr('src', profile.avatar)
         let name = $('<p>').text(profile.firstName + ' ' + profile.lastName)
         let followButton = $('<button>').text('Follow')
@@ -45,6 +46,6 @@ function displayProfiles() {
         profileDiv.append(name)
         profileDiv.append(followButton)
 
-        $('section#main-container tbody').append(profileDiv)
+        $('.main-container').append(profileDiv)
     }
 }
