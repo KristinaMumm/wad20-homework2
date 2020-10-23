@@ -5,13 +5,14 @@ $(function () {
     loadPostsInfo()
         .then( function (response) {
             for (let post of response){
-                alert(post.id)
+                let media = null
+                if (post.media != null) media = new Media(post.media.type, post.media.url);
                 let postitus = new Post (
                     post.id,
                     new Profile(post.author.firstname, post.author.lastname, post.author.avatar),
                     post.createTime,
                     post.text,
-                    new Media(post.media.type, post.media.url),
+                    media,
                     post.likes
                 )
                 posts.push(postitus)
@@ -22,7 +23,13 @@ $(function () {
         .catch(function () {
             alert('Error loading posts')
         })
-    ;
+
+        $('.like-button').click(function () {
+
+            $(this).addClass('liked')
+
+        })
+
 });
 
 function loadPostsInfo() {
@@ -45,16 +52,16 @@ function displayPosts() {
         let authorDiv = $('<div>').attr('class', 'post-author')
         let authorInfoSpan = $('<span>').attr('class', 'post-author-info')
         let authorAvatar = $('<img>').attr('src', post.author.avatar)
-        let authorSmall = $('<small>').text(post.author.firstname + ' ' + post.author.lastname)
+        let authorSmall = $('<small>').text(post.author.firstName + ' ' + post.author.lastName)
         let postDatetimeSmall = $('<small>').text(post.createTime)
         let postImageContainer = $('<div>').attr('class', 'post-image')
-        let postType = post.media.type;
         let postMedia = null
-        if (postType !== null || postType !== "null") {
+        if (post.media !== null) {
+            let postType = post.media.type;
             if (postType === "image") {
-                let postMedia = $('<img>').attr('src', post.media.url)
+                postMedia = $('<img>').attr('src', post.media.url)
             } else {
-                let postMedia = $('<video>').attr('src', post.media.url)
+                postMedia = $('<video>').attr('src', post.media.url)
             }
             postImageContainer.append(postMedia)
         }
@@ -63,7 +70,7 @@ function displayPosts() {
         let postActions = $('<div>').attr('class', 'post-actions')
         let likeButton = $('<button>').attr({'type' : 'button',
             'name' : 'like',
-            'class' : 'like-button'})
+            'class' : 'like-button'}).text(post.likes)
 
         postDiv.append(authorDiv)
         authorDiv.append(authorInfoSpan)
@@ -76,6 +83,6 @@ function displayPosts() {
         postDiv.append(postActions)
         postActions.append(likeButton)
 
-        $('.main-container').append(profileDiv)
+        $('.main-container').append(postDiv)
     }
 }
