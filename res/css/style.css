@@ -237,3 +237,13 @@ section .profile-container p {
 section .profile-container button {
     float: center;
 }
+
+.unfollowed {
+    background-color: purple;
+    color: white;
+}
+
+.followed {
+    background-color: white;
+    color: purple;
+}

@@ -19,6 +19,7 @@ $(function () {
             alert('Error loading profiles')
         })
     ;
+
 });
 
 function loadProfilesInfo() {
@@ -41,6 +42,7 @@ function displayProfiles() {
         let avatar = $('<img>').attr('src', profile.avatar)
         let name = $('<p>').text(profile.firstName + ' ' + profile.lastName)
         let followButton = $('<button>').text('Follow')
+        unfollow(followButton)
 
         profileDiv.append(avatar)
         profileDiv.append(name)
@@ -48,4 +50,22 @@ function displayProfiles() {
 
         $('.main-container').append(profileDiv)
     }
+}
+
+function unfollow(button) {
+    button.attr('class', 'unfollowed')
+    button.text('Follow')
+
+    button.click(function () {
+        follow($(this))
+    })
+}
+
+function follow(button) {
+    button.attr('class', 'followed')
+    button.text('Followed')
+
+    button.click(function () {
+        unfollow($(this))
+    })
 }
