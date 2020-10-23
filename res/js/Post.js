@@ -1,15 +1,12 @@
 class Post {
 
-    constructor(id, authorFirstName, authorLastName, authorAvatar, createTime, postText, mediaType, mediaSource, likes) {
+    constructor(id, author, createTime, postText, media, likes) {
 
         this.id = id;
-        this.authorFirstName = authorFirstName;
-        this.authorLastName = authorLastName;
-        this.authorAvatar = authorAvatar;
+        this.author = author;
         this.createTime = createTime;
         this.postText = postText;
-        this.mediaType = mediaType;
-        this.mediaSource = mediaSource;
+        this.media = media;
         this.likes = likes;
 
     }

@@ -6,27 +6,16 @@ $(function () {
         .then( function (response) {
             for (let post of response){
                 alert(post.id)
-                alert(post.author.firstname)
-                alert(post.author.lastname)
-                alert(post.author.avatar)
-                alert(post.createTime)
-                alert(post.text)
-                alert(post.media.type)
-                alert(post.media.url)
-                alert(post.likes)
-                posts.push(new Post (
+                let postitus = new Post (
                     post.id,
-                    post.author.firstname,
-                    post.author.lastname,
-                    post.author.avatar,
+                    new Profile(post.author.firstname, post.author.lastname, post.author.avatar),
                     post.createTime,
                     post.text,
-                    post.media.type,
-                    post.media.url,
+                    new Media(post.media.type, post.media.url),
                     post.likes
-                    )
                 )
-                alert("ülo")
+                posts.push(postitus)
+
             }
             displayPosts();
         })
