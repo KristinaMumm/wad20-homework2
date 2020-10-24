@@ -32,6 +32,8 @@ $(function () {
 
 });
 
+
+
 function loadPostsInfo() {
     return $.get(
         {
@@ -69,8 +71,8 @@ function displayPosts() {
         let postTitle = $('<h3>').text(post.postText)
         let postActions = $('<div>').attr('class', 'post-actions')
         let likeButton = $('<button>').attr({'type' : 'button',
-            'name' : 'like',
             'class' : 'like-button'}).text(post.likes)
+        unlike(likeButton)
 
         postDiv.append(authorDiv)
         authorDiv.append(authorInfoSpan)
@@ -85,4 +87,23 @@ function displayPosts() {
 
         $('.main-container').append(postDiv)
     }
+}
+
+function unlike(button) {
+
+    button.attr('class', 'like-button')
+
+    button.click(function () {
+        like($(this))
+    })
+}
+
+function like(button) {
+
+    button.addClass("liked")
+
+    button.click(function () {
+        unlike($(this))
+    })
+
 }
