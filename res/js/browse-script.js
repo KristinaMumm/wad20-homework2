@@ -37,6 +37,8 @@ function loadProfilesInfo() {
 }
 
 function displayProfiles() {
+    let i = 0
+
     for (let profile of profiles){
         let profileDiv = $('<div>').attr('class', 'profile-container')
         let avatar = $('<img>').attr('src', profile.avatar)
@@ -48,7 +50,14 @@ function displayProfiles() {
         profileDiv.append(name)
         profileDiv.append(followButton)
 
-        $('.main-container').append(profileDiv)
+        if (i % 2 == 0){
+            $('#left-profile-column').append(profileDiv)
+        }
+        else {
+            $('#right-profile-column').append(profileDiv)
+        }
+        
+        i++
     }
 }
 
