@@ -63,7 +63,7 @@ function displayPosts() {
             if (postType === "image") {
                 postMedia = $('<img>').attr('src', post.media.url)
             } else {
-                postMedia = $('<video>').attr('src', post.media.url)
+                postMedia = $('<video>').attr({'src': post.media.url, "type": "video/mp4", controls: true})
             }
             postImageContainer.append(postMedia)
         }
