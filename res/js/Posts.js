@@ -24,12 +24,6 @@ $(function () {
             alert('Error loading posts')
         })
 
-        $('.like-button').click(function () {
-
-            $(this).addClass('liked')
-
-        })
-
 });
 
 
